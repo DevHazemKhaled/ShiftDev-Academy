@@ -1,167 +1,151 @@
-// هيكل المنهج التعليمي: 30 يوم مقسمة على 4 ليفلات هندسية متقدمة
+// المنهج التعليمي الجديد: فصول، دروس، حوار مبسط (محمود وحازم)، وأسئلة كتابة كود
 const courseData = {
-    level1: {
-        name: "المستوى الأول: هندسة الـ DOM وكواليس عمل المتصفحات (أيام 1-7)",
-        days: {
+    chapter1: {
+        name: "الفصل الأول: الدخول إلى عالم الويب و أساسيات الـ HTML (الدرس 1-5)",
+        lessons: {
             1: {
-                title: "اليوم 1: كيف يعرض المتصفح صفحات الويب فعلياً؟",
-                topic: "كواليس الـ Critical Rendering Path",
+                title: "الدرس 1: يعني إيه موقع ويب أصلاً؟",
+                topic: "مقدمة للمبتدئين تماماً",
                 dialogue: [
-                    { sender: "mentor", text: "يا هلا بمهندس المستقبل! فكك من فكرة إن الـ Front-End شوية ألوان زراير. عشان تبقى جورو بجد، لازم تفهم إيه اللي بيحصل لما تكتب عنوان موقع وتدوس Enter." },
-                    { sender: "peer", text: "يا بشمهندس أنا عارف، السيرفر بيرجع ملف HTML والمتصفح بيعرضه وخلاص!" },
-                    { sender: "mentor", text: "ده القشور يا صديقي! المتصفح بيمر بمراحل معقدة اسمها Critical Rendering Path. أولها بناء الـ DOM Tree والـ CSSOM Tree، وبعدين يدمجهم في Render Tree، وبعدين يحسب الأبعاد (Layout) وأخيراً يلون البيكسلز (Paint)." },
-                    { sender: "peer", text: "أها! يعني كود الـ CSS والـ HTML مش بيشتغلوا مع بعض فجأة؟" },
-                    { sender: "mentor", text: "بالظبط! وأي بلوك في الـ CSS أو الـ JS ممكن يعطل العملية دي كلها ويسبب بطء اسمه Rendering Blocking. وعشان نتاكد إنك لقطت الفكرة دي، حل معايا اللغز ده." }
+                    { sender: "peer", text: "يا بشمهندس حازم، أنا نفسي أدخل مجال الويب بس حاسس إن الموضوع معقد وعامل زي الطلاسم، هو يعني إيه موقع ويب من الأساس؟" },
+                    { sender: "mentor", text: "يا هلا يا محمود! بص يا سيدي، الموضوع أبسط مما تتخيل. شايف العمارة اللي بتتبني؟ الموقع بالظبط زيها. الـ HTML هي الطوب الأحمر والخرسانة (الهيكل الأساسي)، والـ CSS هي المحارة والدهانات والديكور اللي بيخلي شكل العمارة حلو." },
+                    { sender: "peer", text: "أها، يعني الـ HTML هي اللي بتبني الأساس والـ CSS بتجمل الشكل؟" },
+                    { sender: "mentor", text: "بالظبط كده! ومن غير الـ HTML مش هيكون فيه أي عنصر في الصفحة، لا زرار ولا كتابة ولا صورة. وعشان نثبت أول طوبة في دماغك، جرب تحل التحدي اللي ظهرلك تحت ده بسكرول الشاشة." }
                 ],
                 challenge: {
-                    question: "إذا قمت بوضع ملف JavaScript ضخم في هيدر الصفحة <head> بدون أي الكلمات الدلالية مثل async أو defer، ماذا يحدث لعملية بناء الـ DOM؟",
+                    type: "quiz",
+                    question: "ما هو الاختصار الصحيح للغة HTML التي تبني هيكل صفحات الويب؟",
                     options: [
-                        "يتوقف المتصفح تماماً عن بناء الـ DOM حتى يتم تحميل الملف وتشغيله (Parser Blocking).",
-                        "يستمر المتصفح في بناء الـ DOM في الخلفية دون أي تأثر.",
-                        "يتم تجاهل ملف الجافاسكريبت حتى تنتهي الصفحة بالكامل.",
-                        "يتحول الملف تلقائياً ويعمل بشكل غير متزامن."
+                        "Hyper Text Markup Language",
+                        "High Tech Modern Language",
+                        "Home Tool Markup Language",
+                        "Hyperlink and Text Management"
                     ],
                     answer: 0,
-                    explanation: "الله ينور! الجافاسكريبت بطبيعته يعطل الـ Parser، المتصفح أول ما بيشوف سكريبت عادي بيوقف بناء الـ DOM لحد ما ينزل السكريبت ويتنفذ، وده بيعمل بطء رهيب لو مش فاهم هندسة ويب."
+                    explanation: "برافو يا محمود! الاختصار هو Hyper Text Markup Language ودي لغة توصيف وتحديد عناصر الصفحة."
                 }
             },
             2: {
-                title: "اليوم 2: معركة الـ Reflow والـ Repaint",
-                topic: "تحسين أداء الجرافيكس في المتصفح",
+                title: "الدرس 2: كتابة أول عنصر وقوانين التاجات (Tags)",
+                topic: "هيكل الـ Tag في HTML",
                 dialogue: [
-                    { sender: "mentor", text: "النهاردة هنتكلم عن مفهومين هما سر سرعة أي أبلكيشن: الـ Reflow والـ Repaint. لما بتغير حاجة في الـ DOM بالـ JS، المتصفح بيضطر يعيد حساب الأبعاد." },
-                    { sender: "peer", text: "طب ما دي حاجة عادية، المتصفح سريع جداً!" },
-                    { sender: "mentor", text: "لو بتغير عنصر واحد عادي، تخيل لو بتعمل Loop بتغير أبعاد 1000 عنصر ورا بعض؟ المتصفح هيجيب شاشة بيضاء ويهنج لأن الـ Reflow عملية مكلفة جداً للحسابات (CPU Heavy)." }
+                    { sender: "peer", text: "تمام يا بشمهندس، أنا عرفت اسمها. إزاي بقى بكتب الكود ده؟ يعني الكمبيوتر بيفهمني إزاي؟" },
+                    { sender: "mentor", text: "جافاسكريبت والـ الويب بيفهموا عن طريق حاجة اسمها التاجات أو الـ Tags. بتفتح قوس أصغر من < وتكتب اسم العنصر وتقفل بقوس أكبر من >. وزي ما بتفتح الباب، لازم تقفله بـ سلاش /" },
+                    { sender: "peer", text: "يعني لو عايز أكتب عنوان بكتبه إزاي؟" },
+                    { sender: "mentor", text: "العناوين الرئيسية بنرمز لها بـ h1. تفتح التاج تكتب عنوانك وتقفل التاج بالشكل ده: <h1>عنواني</h1>. سكرول كده وشوف السؤال المفاجئ وجرب بنفسك!" }
                 ],
                 challenge: {
-                    question: "أي من الخصائص التالية تغييرها يتسبب في حدوث Repaint فقط دون حدوث Reflow (أي لا تعيد حساب الأبعاد الهندسية للعناصر)؟",
+                    type: "code",
+                    question: "اكتب تاج الإغلاق الصحيح لعنصر الفقرة المكتوب كالتالي: <p>أهلاً بكم في كورس الهندسة",
                     options: [
-                        "تغيير العرض width",
-                        "تغيير لون الخلفية background-color",
-                        "تغيير الهامش margin",
-                        "تغيير الحشو padding"
-                    ],
-                    answer: 1,
-                    explanation: "ممتاز! تغيير الألوان والـ visibility يسبب Repaint فقط لأنه لا يغير مساحة العنصر أو مكانه في التصميم، وبالتالي فهو أسرع بكتير للأداء."
-                }
-            }
-            // يمكن هنا التوسع وإضافة الأيام من 3 إلى 30 بنفس النمط الهيكلي العالي
-        }
-    },
-    level2: {
-        name: "المستوى الثاني: جافا سكريبت المتقدمة وإدارة الذاكرة (أيام 8-15)",
-        days: {
-            8: {
-                title: "اليوم 8: الـ Memory Leaks وكيف يشتغل الـ Garbage Collector؟",
-                topic: "إدارة الذاكرة والـ Call Stack",
-                dialogue: [
-                    { sender: "mentor", text: "أهلاً بيك في ليفل جافاسكريبت للـ Engineers. جافاسكريبت بتنظف الذاكرة لوحدها عبر الـ Garbage Collection، بس الساحر ده ساعات بيغلط لو إنت سايب ثغرات." },
-                    { sender: "peer", text: "ثغرات إزاي؟ أنا بعمل المتغيرات وخلاص!" },
-                    { sender: "mentor", text: "لو عملت Event Listener على عنصر وعملت مسح (Remove) للعنصر ده من الـ DOM، الـ Listener بيفضل عايش في الذاكرة وميتشالش! ده بيعمل تسريب للذاكرة (Memory Leak) والأبلكيشن بيموت بمرور الوقت." }
-                ],
-                challenge: {
-                    question: "كيف نتجنب تسريب الذاكرة الناتجة عن إنشاء تيمرات مستمرة باستخدام setInterval؟",
-                    options: [
-                        "عن طريق استدعاء clearInterval وتمرير معرف التايمر عند الانتهاء منه.",
-                        "عن طريق تصفير الكود وجعله null فقط.",
-                        "المتصفح يمسحها تلقائياً بمجرد الانتقال لصفحة أخرى بدون أي تدخل.",
-                        "تغيير المتغير من let إلى const يمنع التسريب."
+                        "</p>",
+                        "<p/>",
+                        "Progress",
+                        "p/"
                     ],
                     answer: 0,
-                    explanation: "هندسة! الـ clearInterval هي الطريقة الوحيدة لقطع الإشارة وإعلام المحرك أن هذه الذاكرة لم تعد مطلوبة ليقوم الـ Garbage Collector بعمله."
+                    explanation: "عاش يا بشمهندس! تاج الإغلاق دايماً بيبدأ بالشرطة المائلة قبل اسم العنصر بالشكل ده </p>."
                 }
             }
+            // السيستم مهيأ لاستيعاب من 4 لـ 7 دروس لكل فصل
+        },
+        // المراجعة الشاملة للفصل الأول (من 5 إلى 10 أسئلة تظهر في النهاية)
+        review: {
+            title: "🔒 مراجعة الفصل الأول: اختبار صنايعية الكود (اكتب الكود الصحيح)",
+            questions: [
+                {
+                    question: "السؤال 1: ما هو التاج المستخدم لإدراج عنوان بأكبر خط ممكن في الصفحة؟",
+                    options: ["<h1>", "<heading>", "<h6", "<p>"],
+                    answer: 0
+                },
+                {
+                    question: "السؤال 2: ما هو التاج المناسب لكتابة فقرة نصية عادية (Paragraph)؟",
+                    options: ["<p>", "<text>", "<paragraph>", "<lb>"],
+                    answer: 0
+                },
+                {
+                    question: "السؤال 3: أي مما يلي يمثل تاج إدراج صورة بشكل صحيح؟",
+                    options: ["<img>", "<image>", "<picture>", "<src>"],
+                    answer: 0
+                }
+            ]
         }
     }
 };
 
-// إدارة حالة التطبيق ومزامنتها مع الـ LocalStorage
-let currentLevelKey = "level1";
-let currentDayKey = 1;
-let currentMessageIndex = 0;
-let progressState = {};
+// إدارة حالة التطبيق الجديدة بالسكرول والفصول
+let currentChapterKey = "chapter1";
+let currentLessonKey = 1;
+let progressState = { completedLessons: [], currentChapter: "chapter1", currentLesson: 1 };
 
 function initApp() {
-    const savedProgress = localStorage.getItem('frontend_engineer_roadmap');
+    const savedProgress = localStorage.getItem('frontend_academy_progress');
     if (savedProgress) {
         progressState = JSON.parse(savedProgress);
-    } else {
-        // تهيئة البيانات لأول مرة
-        progressState = { completedDays: [], currentLevel: "level1", currentDay: 1 };
-        localStorage.setItem('frontend_engineer_roadmap', JSON.stringify(progressState));
     }
     
-    currentLevelKey = progressState.currentLevel;
-    currentDayKey = progressState.currentDay;
+    currentChapterKey = progressState.currentChapter || "chapter1";
+    currentLessonKey = progressState.currentLesson || 1;
 
     renderSidebarNav();
-    loadDayContent();
+    loadLessonContent();
+    
+    // إخفاء زر الرسالة التالية التقليدي لأننا بنعتمد السكرول التلقائي بالكامل
+    const nextBtn = document.getElementById('next-chat-btn');
+    if(nextBtn) nextBtn.style.display = 'none';
 }
 
 function renderSidebarNav() {
     const navContainer = document.getElementById('levels-nav');
     navContainer.innerHTML = '';
 
-    for (const [levelKey, levelData] of Object.entries(courseData)) {
+    for (const [chKey, chData] of Object.entries(courseData)) {
         const levelBlock = document.createElement('div');
         levelBlock.className = 'level-block';
-        levelBlock.innerHTML = `<div class="level-title">${levelData.name}</div>`;
+        levelBlock.innerHTML = `<div class="level-title">${chData.name}</div>`;
 
-        for (const [dayNum, dayData] of Object.entries(levelData.days)) {
+        for (const [lessonNum, lessonData] of Object.entries(chData.lessons)) {
             const dayItem = document.createElement('div');
-            const isCompleted = progressState.completedDays.includes(`${levelKey}_${dayNum}`);
-            const isActive = currentLevelKey === levelKey && currentDayKey == dayNum;
+            const isCompleted = progressState.completedLessons.includes(`${chKey}_${lessonNum}`);
+            const isActive = currentChapterKey === chKey && currentLessonKey == lessonNum;
             
             dayItem.className = `day-item ${isActive ? 'active' : ''} ${isCompleted ? 'completed' : ''}`;
-            dayItem.innerHTML = `<span>${dayData.title}</span>`;
-            dayItem.onclick = () => switchDay(levelKey, parseInt(dayNum));
+            dayItem.innerHTML = `<span>${lessonData.title}</span>`;
+            dayItem.onclick = () => switchLesson(chKey, parseInt(lessonNum));
             levelBlock.appendChild(dayItem);
         }
+        
+        // إضافة زر المراجعة في نهاية الفصل
+        const reviewItem = document.createElement('div');
+        reviewItem.className = `day-item review-item`;
+        reviewItem.innerHTML = `<span>📝 مراجعة الفصل واختبار الكود</span>`;
+        reviewItem.onclick = () => loadChapterReview(chKey);
+        levelBlock.appendChild(reviewItem);
+        
         navContainer.appendChild(levelBlock);
     }
-    
-    // تحديث شريط النسبة الكلية للتعلم
-    const totalDays = 30; // الخطة المستهدفة
-    const percent = Math.min((progressState.completedDays.length / totalDays) * 100, 100);
-    document.getElementById('overall-progress').style.width = `${percent}%`;
 }
 
-function loadDayContent() {
-    const dayData = courseData[currentLevelKey].days[currentDayKey];
-    document.getElementById('current-day-title').innerText = dayData.title;
-    document.getElementById('current-day-topic').innerText = `المفهوم الهندسي: ${dayData.topic}`;
+function loadLessonContent() {
+    const lessonData = courseData[currentChapterKey].lessons[currentLessonKey];
+    document.getElementById('current-day-title').innerText = lessonData.title;
+    document.getElementById('current-day-topic').innerText = `الموضوع: ${lessonData.topic}`;
     
-    // تصفير منطقة الشات والتحكم
-    document.getElementById('chat-box').innerHTML = '';
-    document.getElementById('challenge-container').style.display = 'none';
-    document.getElementById('next-chat-btn').style.display = 'block';
-    currentMessageIndex = 0;
-    
-    // تشغيل أول رسالة تلقائياً
-    triggerNextMessage();
-}
-
-function triggerNextMessage() {
-    const dayData = courseData[currentLevelKey].days[currentDayKey];
     const chatBox = document.getElementById('chat-box');
+    chatBox.innerHTML = ''; // تنظيف الشات
     
-    if (currentMessageIndex < dayData.dialogue.length) {
-        const msg = dayData.dialogue[currentMessageIndex];
+    // عرض المحادثة بالكامل دفعة واحدة ليقوم المستخدم بعمل سكرول طبيعي وقراءتها
+    lessonData.dialogue.forEach(msg => {
         const msgElement = document.createElement('div');
         msgElement.className = `message ${msg.sender}`;
-        
-        const senderName = msg.sender === 'mentor' ? 'المهندس الإستشاري' : 'أنت (المهندس المحاور)';
-        msgElement.innerHTML = `<strong>${senderName}</strong><p>${msg.text}</p>`;
-        
+        const name = msg.sender === 'mentor' ? 'حازم (المهندس الخبير)' : 'محمود (الطالب المحاور)';
+        msgElement.innerHTML = `<strong>${name}</strong><p>${msg.text}</p>`;
         chatBox.appendChild(msgElement);
-        chatBox.scrollTop = chatBox.scrollHeight;
-        
-        currentMessageIndex++;
-    } else {
-        // حان وقت التحدي لفتح باقي المحادثة أو الانتقال
-        document.getElementById('next-chat-btn').style.display = 'none';
-        showChallenge(dayData.challenge);
-    }
+    });
+
+    // إظهار السؤال المفاجئ تلقائياً في نهاية السكرول
+    showChallenge(lessonData.challenge);
+    chatBox.scrollTop = 0; // يبدأ من فوق عشان يسكرول براحته
 }
 
 function showChallenge(challenge) {
@@ -185,38 +169,71 @@ function checkAnswer(selectedIndex, correctIndex, explanation) {
     const feedback = document.getElementById('feedback-message');
     if (selectedIndex === correctIndex) {
         feedback.className = "feedback correct";
-        feedback.innerText = `✅ إجابة هندسية صحيحة! ${explanation}`;
+        feedback.innerText = `✅ عاش يا محمود! ${explanation}`;
         
-        // تسجيل اليوم كمكتمل
-        const dayMark = `${currentLevelKey}_${currentDayKey}`;
-        if (!progressState.completedDays.includes(dayMark)) {
-            progressState.completedDays.push(dayMark);
+        const mark = `${currentChapterKey}_${currentLessonKey}`;
+        if (!progressState.completedLessons.includes(mark)) {
+            progressState.completedLessons.push(mark);
         }
         
-        localStorage.setItem('frontend_engineer_roadmap', JSON.stringify(progressState));
+        localStorage.setItem('frontend_academy_progress', JSON.stringify(progressState));
         renderSidebarNav();
-        
-        // إظهار زر الانتقال لليوم التالي بعد ثانيتين
-        setTimeout(() => {
-            document.getElementById('challenge-container').style.display = 'none';
-            alert("مبروك قفلت اليوم ده بنجاح، تقدر تنقل على اليوم اللي بعده من القائمة الجانبية أو استمر في استكشاف الكود!");
-        }, 3000);
     } else {
         feedback.className = "feedback incorrect";
-        feedback.innerText = "❌ لأ فكر تاني كـ Engineer.. الطريقة دي هتسبب بطء أو تسريب داتا!";
+        feedback.innerText = "❌ ركز يا محمود، حازم قالك التاج بيتقفل إزاي؟ راجع المحادثة فوق تاني!";
     }
 }
 
-function switchDay(levelKey, dayNum) {
-    currentLevelKey = levelKey;
-    currentDayKey = dayNum;
-    progressState.currentLevel = levelKey;
-    progressState.currentDay = dayNum;
-    localStorage.setItem('frontend_engineer_roadmap', JSON.stringify(progressState));
+function loadChapterReview(chKey) {
+    const reviewData = courseData[chKey].review;
+    document.getElementById('current-day-title').innerText = reviewData.title;
+    document.getElementById('current-day-topic').innerText = "تمارين مكثفة على كتابة الكود وفهم أساسيات الويب";
     
-    renderSidebarNav();
-    loadDayContent();
+    const chatBox = document.getElementById('chat-box');
+    chatBox.innerHTML = '<div class="message mentor"><strong>حازم</strong><p>وصلنا للمراجعة يا محمود! هنا مفيش كلام كتير، هنا فيه كود حقيقي محتاجين نتأكد إنك بتعرف تكتبه بإيدك، حل الـ 3 أسئلة دول عشان تفتح الفصل الجديد!</p></div>';
+    
+    // عرض أول سؤال مراجعة في صندوق التحدي
+    let currentReviewIndex = 0;
+    const showReviewQuestion = () => {
+        if(currentReviewIndex < reviewData.questions.length) {
+            const q = reviewData.questions[currentReviewIndex];
+            document.getElementById('challenge-text').innerText = `[سؤال مراجعة ${currentReviewIndex + 1}] ${q.question}`;
+            const optionsGrid = document.getElementById('challenge-options');
+            optionsGrid.innerHTML = '';
+            
+            q.options.forEach((opt, idx) => {
+                const btn = document.createElement('button');
+                btn.className = 'option-btn';
+                btn.innerText = opt;
+                btn.onclick = () => {
+                    if(idx === q.answer) {
+                        currentReviewIndex++;
+                        showReviewQuestion();
+                    } else {
+                        alert("الإجابة مش مظبوطة، فكر تاني قبل ما تكتب الكود!");
+                    }
+                };
+                optionsGrid.appendChild(btn);
+            });
+        } else {
+            document.getElementById('challenge-container').style.display = 'none';
+            alert("💥 الله ينور! قفلت مراجعة الفصل ده بنجاح ومستعد للفصل القادم!");
+        }
+    };
+    
+    showReviewQuestion();
+    document.getElementById('challenge-container').style.display = 'block';
 }
 
-// تشغيل التطبيق فور تحميل الصفحة
+function switchLesson(chKey, lessonNum) {
+    currentChapterKey = chKey;
+    currentLessonKey = lessonNum;
+    progressState.currentChapter = chKey;
+    progressState.currentLesson = lessonNum;
+    localStorage.setItem('frontend_academy_progress', JSON.stringify(progressState));
+    
+    renderSidebarNav();
+    loadLessonContent();
+}
+
 window.onload = initApp;
