@@ -1,0 +1,285 @@
+/* إعدادات الألوان المتناسقة مع طابع هندسي تقني داكن */
+:root {
+    --bg-main: #0a0e17;
+    --bg-card: #121824;
+    --bg-sidebar: #0d131f;
+    --neon-blue: #00f2fe;
+    --neon-purple: #b925f4;
+    --text-white: #ffffff;
+    --text-gray: #94a3b8;
+    --success-green: #10b981;
+    --error-red: #ef4444;
+    --border-color: #1e293b;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: var(--bg-main);
+    color: var(--text-white);
+    height: 100vh;
+    overflow: hidden;
+}
+
+.app-container {
+    display: grid;
+    grid-template-columns: 320px 1fr;
+    height: 100vh;
+}
+
+/* القائمة الجانبية */
+.sidebar {
+    background-color: var(--bg-sidebar);
+    border-left: 1px solid var(--border-color);
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+}
+
+.sidebar-header {
+    padding: 25px 20px;
+    border-bottom: 1px solid var(--border-color);
+    background: linear-gradient(to bottom, #111827, var(--bg-sidebar));
+}
+
+.sidebar-header h2 {
+    font-size: 20px;
+    color: var(--neon-blue);
+    text-shadow: 0 0 10px rgba(0, 242, 254, 0.3);
+}
+
+.sidebar-header p {
+    font-size: 12px;
+    color: var(--text-gray);
+    margin-top: 5px;
+}
+
+/* المستويات والأيام */
+.level-block {
+    padding: 15px 20px;
+}
+
+.level-title {
+    font-size: 13px;
+    color: var(--neon-purple);
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+}
+
+.day-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 12px;
+    background-color: rgba(255, 255, 255, 0.02);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    margin-bottom: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    color: var(--text-gray);
+    transition: all 0.2s ease;
+}
+
+.day-item:hover, .day-item.active {
+    border-color: var(--neon-blue);
+    color: var(--text-white);
+    background-color: rgba(0, 242, 254, 0.05);
+}
+
+.day-item.completed {
+    border-right: 4px solid var(--success-green);
+}
+
+/* المنطقة الرئيسية ومساحة المحادثة */
+.main-workspace {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    background-color: var(--bg-main);
+}
+
+.workspace-header {
+    padding: 20px 30px;
+    border-bottom: 1px solid var(--border-color);
+    background-color: var(--bg-card);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.day-info h1 {
+    font-size: 22px;
+    color: var(--text-white);
+}
+
+.day-info p {
+    font-size: 14px;
+    color: var(--text-gray);
+}
+
+.progress-bar-container {
+    width: 150px;
+    height: 8px;
+    background-color: var(--border-color);
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.progress-bar {
+    width: 0%;
+    height: 100%;
+    background: linear-gradient(90deg, var(--neon-blue), var(--neon-purple));
+    transition: width 0.5s ease;
+}
+
+/* فقاعات المحادثة */
+.chat-zone {
+    flex: 1;
+    padding: 30px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.message {
+    max-width: 75%;
+    padding: 15px 20px;
+    border-radius: 16px;
+    font-size: 15px;
+    line-height: 1.6;
+    animation: fadeInUp 0.4s ease forwards;
+}
+
+.message strong {
+    display: block;
+    font-size: 12px;
+    margin-bottom: 5px;
+    color: var(--neon-blue);
+}
+
+/* رسالة الخبير الإستشاري */
+.message.mentor {
+    align-self: flex-start;
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-top-right-radius: 0;
+}
+
+/* رسالة الطالب أو الطرف الثاني المحاور */
+.message.peer {
+    align-self: flex-end;
+    background: linear-gradient(135deg, #1e293b, #0f172a);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-top-left-radius: 0;
+}
+.message.peer strong {
+    color: var(--neon-purple);
+}
+
+/* منطقة التحديات */
+.challenge-zone {
+    padding: 20px 30px;
+    background-color: rgba(15, 23, 42, 0.9);
+    border-top: 2px solid var(--neon-purple);
+}
+
+.challenge-card {
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 20px;
+}
+
+.challenge-header {
+    font-size: 14px;
+    color: var(--neon-purple);
+    font-weight: bold;
+    margin-bottom: 12px;
+}
+
+.challenge-question {
+    font-size: 16px;
+    margin-bottom: 15px;
+    line-height: 1.5;
+}
+
+.options-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+}
+
+.option-btn {
+    padding: 12px;
+    background-color: var(--bg-main);
+    border: 1px solid var(--border-color);
+    color: var(--text-white);
+    border-radius: 8px;
+    cursor: pointer;
+    text-align: right;
+    font-size: 14px;
+    transition: all 0.2s;
+}
+
+.option-btn:hover {
+    border-color: var(--neon-blue);
+    background-color: rgba(0, 242, 254, 0.02);
+}
+
+.feedback {
+    margin-top: 10px;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.feedback.correct { color: var(--success-green); }
+.feedback.incorrect { color: var(--error-red); }
+
+/* أزرار التحكم السفلى */
+.controls-zone {
+    padding: 20px;
+    background-color: var(--bg-sidebar);
+    border-top: 1px solid var(--border-color);
+    display: flex;
+    justify-content: center;
+}
+
+.control-btn {
+    padding: 14px 40px;
+    background: linear-gradient(90deg, var(--neon-blue), var(--neon-purple));
+    color: white;
+    border: none;
+    border-radius: 30px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.control-btn:hover {
+    transform: scale(1.03);
+}
+
+.pulse {
+    animation: pulseGlow 2s infinite;
+}
+
+/* الأنيميشن */
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(15px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulseGlow {
+    0% { box-shadow: 0 0 0 0 rgba(0, 242, 254, 0.4); }
+    70% { box-shadow: 0 0 0 15px rgba(0, 242, 254, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(0, 242, 254, 0); }
+}

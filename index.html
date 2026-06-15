@@ -1,1 +1,68 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Front-End Engineer | 30 Days Journey</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
 
+    <div class="app-container">
+        <!-- القائمة الجانبية للمستويات والأيام -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h2>Front-End Engineer</h2>
+                <p>رحلة الـ 30 يوماً للتأسيس الهندسي</p>
+            </div>
+            
+            <nav class="levels-container" id="levels-nav">
+                <!-- سيتم توليد الأيام والمستويات عبر الجافاسكريبت -->
+            </nav>
+        </aside>
+
+        <!-- منطقة المحاكاة والتعليم الرئيسية -->
+        <main class="main-workspace">
+            <!-- الهيدر الخاص باليوم الحالي -->
+            <header class="workspace-header">
+                <div class="day-info">
+                    <h1 id="current-day-title">تحميل الرحلة...</h1>
+                    <p id="current-day-topic">استعد لبناء عقلية المهندس</p>
+                </div>
+                <div class="progress-bar-container">
+                    <div class="progress-bar" id="overall-progress"></div>
+                </div>
+            </header>
+
+            <!-- شاشة المحادثة التفاعلية -->
+            <section class="chat-zone" id="chat-box">
+                <!-- الرسايل بتنزل هنا -->
+            </section>
+
+            <!-- منطقة التحدي والاختبار (تظهر لتعطيل المحادثة حتى يحل المستخدم) -->
+            <section class="challenge-zone" id="challenge-container" style="display: none;">
+                <div class="challenge-card">
+                    <div class="challenge-header">
+                        <span>🛠️ تحدي هندسي لإكمال المحادثة</span>
+                    </div>
+                    <p class="challenge-question" id="challenge-text">سؤال التحدي يظهر هنا...</p>
+                    
+                    <!-- الإدخال التفاعلي (إما اختيارات أو كود) -->
+                    <div id="challenge-options" class="options-grid"></div>
+                    
+                    <div class="challenge-actions">
+                        <p id="feedback-message" class="feedback"></p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- أزرار التحكم في تدفق المحادثة -->
+            <footer class="controls-zone">
+                <button id="next-chat-btn" class="control-btn pulse" onclick="triggerNextMessage()">اضغط لقراءة الرسالة التالية 💬</button>
+            </footer>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
